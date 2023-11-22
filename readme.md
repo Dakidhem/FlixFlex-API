@@ -9,14 +9,18 @@ FlixFlex is a web application that allows users to explore movies and series. Th
   - [Installation](#installation)
   - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
-  - [User Authentication](#user-authentication)
-  - [Movies](#movies)
-  - [Favorites](#favorites)
-  - [Search](#search)
-  - [Trailers](#trailers)
-- [Usage Examples](#usage-examples)
-- [Contributing](#contributing)
-- [License](#license)
+  - [Authentification]
+    - [Create an account](#create-an-account)
+    - [Login to your account](#login-to-your-account)
+  - [Movies]
+    - [Get a list of movies](#get-a-list-of-movies)
+    - [Get a list of the top 5 movies/series](#get-a-list-of-the-top-5-movies/series)
+    - [Add a movie to your favorites](#add-a-movie-to-your-favorites)
+    - [Remove a movie from your favorites](#remove-a-movie-from-your-favorites)
+    - [View the list of your favorites movies and series](#view-the-list-of-your-favorites-movies-and-series)
+    - [Search for movies and series by the name of the movie](#search-for-movies-and-series-by-the-name-of-the-movie)
+    - [View the details of a movie or series](#view-the-details-of-a-movie-or-series)
+    - [Watch the trailer of a movie or series](#watch-the-trailer-of-a-movie-or-series)
 
 ## Getting Started
 
@@ -101,7 +105,7 @@ In order to get access to this part you will need to login and send with each re
 
 example : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVkMmE3YjY0ZThjODRjYjRjYmE5OTUiLCJpYXQiOjE3MDA2ODU1MDEsImV4cCI6MTcwMDY4OTEwMX0.prYQxpRnWfw06E6bPJKUe5FvTi7jduK0xGL9eHODNN0
 
-#### Get a list of movies in a batch of 10 per page
+#### Get a list of movies
 
 To get a list of movies in a batch of 10 per page, send a GET request to `localhost:3001/api/movies?page=<page_number>`.
 
