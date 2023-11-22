@@ -9,10 +9,10 @@ FlixFlex is a web application that allows users to explore movies and series. Th
   - [Installation](#installation)
   - [Environment Variables](#environment-variables)
 - [API Endpoints](#api-endpoints)
-  - [Authentification]
+  - [Authentification](#authentification)
     - [Create an account](#create-an-account)
     - [Login to your account](#login-to-your-account)
-  - [Movies]
+  - [Movies](#movies)
     - [Get a list of movies](#get-a-list-of-movies)
     - [Get a list of the top 5 movies/series](#get-a-list-of-the-top-5-movies/series)
     - [Add a movie to your favorites](#add-a-movie-to-your-favorites)
