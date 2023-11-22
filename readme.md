@@ -49,7 +49,7 @@ Before getting started, make sure you have the following installed on your syste
 
 ## API Endpoints
 
-### User Authentication
+### Create an account
 
 To create a new account, send a POST request to `localhost:3001/api/auth/signup` with the following JSON payload:
 
@@ -60,6 +60,19 @@ To create a new account, send a POST request to `localhost:3001/api/auth/signup`
 }
 ```
 
+you will receive a token in the response, copy it you will need it.
+
+Example:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVkMmE3YjY0ZThjODRjYjRjYmE5OTUiLCJpYXQiOjE3MDA2ODU1MDEsImV4cCI6MTcwMDY4OTEwMX0.prYQxpRnWfw06E6bPJKUe5FvTi7jduK0xGL9eHODNN0",
+  "userId": "655d2a7b64e8c84cb4cba995"
+}
+```
+
+### Login to your account
+
 To login to your account, send a POST request to `localhost:3001/api/auth/login` with the following JSON payload:
 
 ```json
@@ -69,44 +82,102 @@ To login to your account, send a POST request to `localhost:3001/api/auth/login`
 }
 ```
 
-### Getting a List of all Employees
+you will receive a token in the response, copy it you will need it.
 
-To get a list of employees, send a GET request to `localhost:3001/api/a`. You can add an optional query parameter to filter employees by the date of creation:
-
-```http
-GET localhost:3001/api/employees
-```
-
-### Filter by date
-
-To get a list of employees by a date, send a GET request to `localhost:3001/api/employees/:date`:
-
-```http
-GET localhost:3001/api/employees/2023-11-02
-```
-
-### Employee Check-In
-
-To record an employee's check-in, send a POST request to `localhost:3001/api/times/check-in` with the following JSON payload:
+Example:
 
 ```json
 {
-  "employeeId": "<Employee_ID>",
-  "description": "Check in"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVkMmE3YjY0ZThjODRjYjRjYmE5OTUiLCJpYXQiOjE3MDA2ODU1MDEsImV4cCI6MTcwMDY4OTEwMX0.prYQxpRnWfw06E6bPJKUe5FvTi7jduK0xGL9eHODNN0",
+  "userId": "655d2a7b64e8c84cb4cba995"
 }
 ```
 
-Replace `<Employee_ID>` with the employee's ID.
+### Get a list of movies in a batch of 10 per page
 
-### Employee Check-Out
+To get a list of movies in a batch of 10 per page, send a GET request to `localhost:3001/api/movies?page=<page_number>`.
 
-To record an employee's check-out, send a POST request to `localhost:3001/api/times/check-out` with the following JSON payload:
+```http
+GET localhost:3001/api/movies?page=5
+```
+
+### Get a list of the top 5 movies/series
+
+To get a list of the top 5 movies/series, send a GET request to `localhost:3001/api/movies/top5movies`:
+
+```http
+GET localhost:3001/api/movies/top5movies
+```
+
+### Add a movie to your favorites
+
+To add a movie to your favorites, send a POST request to `localhost:3001/api/movies/favorites/add` with the following JSON payload:
 
 ```json
 {
-  "employeeId": "<Employee_ID>",
-  "description": "Check out"
+  "movieId": 38
 }
 ```
 
-Replace `<Employee_ID>` with the employee's ID.
+### Remove a movie from your favorites
+
+To remove a movie from your favorites, send a delete request to `localhost:3001/api/movies/favorites/remove/<movieId>`:
+
+```http
+GET localhost:3001/api/movies/favorites/remove/38
+```
+
+### View the list of your favorites movies and series
+
+To view the list of your favorites movies and series, send a get request to `localhost:3001/api/movies/favorites`:
+
+```http
+GET localhost:3001/api/movies/favorites
+```
+
+### Search for movies and series by the name of the movie
+
+To search for movies and series by the name of the movie, send a get request to `localhost:3001/api/movies/search?search=<query>`:
+
+```http
+GET localhost:3001/api/movies/search?search=dark
+```
+
+I can add others search option.
+
+### View the details of a movie or series
+
+To view the details of a movie or series, send a get request to `localhost:3001/api/movies/details/<movieId>`:
+
+```http
+GET localhost:3001/api/movies/details/38
+```
+
+### Watch the trailer of a movie or series
+
+To watch the trailer of a movie or series, send a get request to `localhost:3001/api/movies/trailer/<movieId>` :
+
+```http
+GET localhost:3001/api/movies/trailer/38
+```
+
+you will receive this reponse :
+
+```json
+{
+  "trailer": {
+    "iso_639_1": "en",
+    "iso_3166_1": "US",
+    "name": "Eternal Sunshine of the Spotless Mind Trailer",
+    "key": "rb9a00bXf-U",
+    "published_at": "2011-04-13T23:58:52.000Z",
+    "site": "YouTube",
+    "size": 480,
+    "type": "Trailer",
+    "official": true,
+    "id": "5af1d6140e0a26689f000232"
+  }
+}
+```
+
+To watch the trailer from the response, you can construct the YouTube video URL using the key property from the API response. YouTube video URLs are typically in the format https://www.youtube.com/watch?v=<key>.
