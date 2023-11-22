@@ -49,7 +49,9 @@ Before getting started, make sure you have the following installed on your syste
 
 ## API Endpoints
 
-### Create an account
+### Authentification
+
+#### Create an account
 
 To create a new account, send a POST request to `localhost:3001/api/auth/signup` with the following JSON payload:
 
@@ -71,7 +73,7 @@ Example:
 }
 ```
 
-### Login to your account
+#### Login to your account
 
 To login to your account, send a POST request to `localhost:3001/api/auth/login` with the following JSON payload:
 
@@ -93,7 +95,13 @@ Example:
 }
 ```
 
-### Get a list of movies in a batch of 10 per page
+### Movies
+
+In order to get access to this part you will need to login and send with each request an authorization in the header with a Bearer token
+
+example : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTVkMmE3YjY0ZThjODRjYjRjYmE5OTUiLCJpYXQiOjE3MDA2ODU1MDEsImV4cCI6MTcwMDY4OTEwMX0.prYQxpRnWfw06E6bPJKUe5FvTi7jduK0xGL9eHODNN0
+
+#### Get a list of movies in a batch of 10 per page
 
 To get a list of movies in a batch of 10 per page, send a GET request to `localhost:3001/api/movies?page=<page_number>`.
 
@@ -101,7 +109,7 @@ To get a list of movies in a batch of 10 per page, send a GET request to `localh
 GET localhost:3001/api/movies?page=5
 ```
 
-### Get a list of the top 5 movies/series
+#### Get a list of the top 5 movies/series
 
 To get a list of the top 5 movies/series, send a GET request to `localhost:3001/api/movies/top5movies`:
 
@@ -109,7 +117,7 @@ To get a list of the top 5 movies/series, send a GET request to `localhost:3001/
 GET localhost:3001/api/movies/top5movies
 ```
 
-### Add a movie to your favorites
+#### Add a movie to your favorites
 
 To add a movie to your favorites, send a POST request to `localhost:3001/api/movies/favorites/add` with the following JSON payload:
 
@@ -119,7 +127,7 @@ To add a movie to your favorites, send a POST request to `localhost:3001/api/mov
 }
 ```
 
-### Remove a movie from your favorites
+#### Remove a movie from your favorites
 
 To remove a movie from your favorites, send a delete request to `localhost:3001/api/movies/favorites/remove/<movieId>`:
 
@@ -127,7 +135,7 @@ To remove a movie from your favorites, send a delete request to `localhost:3001/
 GET localhost:3001/api/movies/favorites/remove/38
 ```
 
-### View the list of your favorites movies and series
+#### View the list of your favorites movies and series
 
 To view the list of your favorites movies and series, send a get request to `localhost:3001/api/movies/favorites`:
 
@@ -135,7 +143,7 @@ To view the list of your favorites movies and series, send a get request to `loc
 GET localhost:3001/api/movies/favorites
 ```
 
-### Search for movies and series by the name of the movie
+#### Search for movies and series by the name of the movie
 
 To search for movies and series by the name of the movie, send a get request to `localhost:3001/api/movies/search?search=<query>`:
 
@@ -145,7 +153,7 @@ GET localhost:3001/api/movies/search?search=dark
 
 I can add others search option.
 
-### View the details of a movie or series
+#### View the details of a movie or series
 
 To view the details of a movie or series, send a get request to `localhost:3001/api/movies/details/<movieId>`:
 
@@ -153,7 +161,7 @@ To view the details of a movie or series, send a get request to `localhost:3001/
 GET localhost:3001/api/movies/details/38
 ```
 
-### Watch the trailer of a movie or series
+#### Watch the trailer of a movie or series
 
 To watch the trailer of a movie or series, send a get request to `localhost:3001/api/movies/trailer/<movieId>` :
 
@@ -180,4 +188,4 @@ you will receive this reponse :
 }
 ```
 
-To watch the trailer from the response, you can construct the YouTube video URL using the key property from the API response. YouTube video URLs are typically in the format https://www.youtube.com/watch?v=<key>.
+To watch the trailer from the response, you can construct the YouTube video URL using the key property from the API response. YouTube video URLs are typically in the format https://www.youtube.com/watch?v=key.
