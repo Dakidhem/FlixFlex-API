@@ -1,0 +1,24 @@
+version: "3"
+services:
+  # Node.js Application
+  app:
+    container_name: test-app
+    build:
+      context: .
+    ports:
+      - "3001:3001"
+    environment:
+      LOCAL_DB: mongodb://mongo:27017/flixflex
+      API_KEY: 24aeebb3ead2262c46d4f1c1cb511a16
+      SECRET_KEY: mehdikadiri
+    depends_on:
+      - mongo
+
+  # MongoDB
+  mongo:
+    container_name: mongo-db
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db:/data/db
