@@ -51,6 +51,10 @@ Before getting started, make sure you have the following installed on your syste
 
    ```
 
+## Environment Variables
+
+The Environment Variables are stored in the docker-compose file you can change them if you want.
+
 ## API Endpoints
 
 ### Authentification
