@@ -81,7 +81,7 @@ const addToFavorites = async (req, res) => {
     const movieInfo = {
       movieId: Number(response.data.id),
       title: response.data.title,
-      genre: response.data.genres.map((genre) => genre.name).join(", "), // Assuming genres is an array
+      genre: response.data.genres.map((genre) => genre.name).join(", "),
       // Add more fields as needed
     };
 
